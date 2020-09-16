@@ -22,9 +22,4 @@ jobs:
       - name: Synopsys Detect
         uses: blackducksoftware/github-action@2.0.1
         with:
-          args: |
-            '--blackduck.url="${{ secrets.BLACKDUCK_URL}}" \
-             --detect.project.name="${{ secrets.BLACKDUCK_PROJECT_NAME }}" \
-             --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" \
-             --detect.project.version.name="1gh" \
-             --detect.risk.report.pdf=true'
+          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL}}"  --detect.project.name="${{ secrets.BLACKDUCK_PROJECT_NAME }}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.project.version.name="1gh" --detect.risk.report.pdf=true'

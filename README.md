@@ -1,3 +1,5 @@
+![Build status](https://github.com/vbasem/fort/.github/workflows/scan.yml/badge.svg)
+
 # FORT
 
 
