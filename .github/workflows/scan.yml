@@ -1,5 +1,13 @@
 name: Black Duck scan
-on: [push]
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -14,4 +22,9 @@ jobs:
       - name: Synopsys Detect
         uses: blackducksoftware/github-action@2.0.1
         with:
-          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL}}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.risk.report.pdf=true'
+          args: |
+            '--blackduck.url="${{ secrets.BLACKDUCK_URL}}" \
+             --detect.project.name="${{ secrets.BLACKDUCK_PROJECT_NAME }}" \
+             --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" \
+             --detect.project.version.name="1gh" \
+             --detect.risk.report.pdf=true'
