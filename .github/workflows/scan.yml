@@ -35,10 +35,10 @@ jobs:
           args: |
            '--blackduck.url="${{ secrets.BLACKDUCK_URL}}"  \
            --detect.project.name="${{ secrets.BLACKDUCK_PROJECT_NAME }}" \
-           --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" \
+           --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN }}" \
            --detect.excluded.detector.types=GIT \
-           --detect.project.version.name="1gh" \
-           --detect.blackduck.signature.scanner.exclusion.name.pattern=.git,node_modules \
-           --detect.detector.search.depth=6'
+           --detect.project.version.name="1.1-beta" \
+           --detect.blackduck.signature.scanner.exclusion.name.pattern=.git,node_modules'
 
 #            --detect.risk.report.pdf=true \
+#            --detect.detector.search.depth=3
