@@ -37,10 +37,22 @@ jobs:
            --detect.project.name="${{ secrets.BLACKDUCK_PROJECT_NAME }}" \
            --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN }}" \
            --detect.excluded.detector.types=GIT \
-           --detect.project.version.name="1.2-beta" \
+           --detect.project.version.name="1.3-beta" \
            --detect.blackduck.signature.scanner.exclusion.name.pattern=.git,node_modules \
+           --detect.notices.report=true \
            '
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: Scan Bot
+          author_email: scan@bot
+          message: "new scan report"
+          add: "*.txt"
+          ref: 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}           
+           
 
-# --detect.risk.report.pdf=true \
+# --detect.notices.report=true \
 # --detect.detector.search.depth=3 \
 # --detect.npm.include.dev.dependencies=false \
