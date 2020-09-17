@@ -16,11 +16,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+        name: checkout code
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '^1.13.1'
+      - run: go version        
+      - name: Set up JDK 1.11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+      - run: java -version
       - name: build frontend
         run: |
           cd frontend && npm install
       - name: Synopsys Detect
         uses: blackducksoftware/github-action@2.0.1
         with:
-          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL}}"  --detect.project.name="${{ secrets.BLACKDUCK_PROJECT_NAME }}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.excluded.detector.types
-=GIT --detect.project.version.name="1gh" --detect.risk.report.pdf=true --detect.blackduck.signature.scanner.exclusion.name.pattern=.git,node_modules'
+          args: '--blackduck.url="${{ secrets.BLACKDUCK_URL}}"  --detect.project.name="${{ secrets.BLACKDUCK_PROJECT_NAME }}" --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN}}" --detect.excluded.detector.types=GIT --detect.project.version.name="1gh" --detect.risk.report.pdf=true --detect.blackduck.signature.scanner.exclusion.name.pattern=.git,node_modules'
