@@ -38,6 +38,7 @@ jobs:
            --blackduck.api.token="${{ secrets.BLACKDUCK_API_TOKEN }}" \
            --detect.excluded.detector.types=GIT \
            --detect.project.version.name="1.3-beta" \
+           --detect.detector.search.depth=3 \
            --detect.blackduck.signature.scanner.exclusion.name.pattern=.git,node_modules \
            '
 #       - name: Commit changes
