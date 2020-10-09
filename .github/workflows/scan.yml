@@ -31,6 +31,8 @@ jobs:
           cd frontend && npm install
       - name: Synopsys Detect
         uses: blackducksoftware/github-action@2.0.1
+        env:
+          SYNOPSYS_SKIP_PHONE_HOME: true
         with:
           args: |
            '--blackduck.url="${{ secrets.BLACKDUCK_URL}}"  \
